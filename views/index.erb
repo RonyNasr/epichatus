@@ -1,0 +1,19 @@
+<div class="row chatbox">
+  <div class="col-sm-4 user-list">
+    <div class="list-group">
+      <% if @users.any?() %>
+        <% @users.each() do |user| %>
+          <a href="#" class="start-conversation list-group-item <% user.online()? "" :"disabled" %>" value="user.id()">user.username()</a>
+        <% end %>
+      <% end %>
+
+    </div>
+
+
+
+  </div>
+  <div class="col-sm-7 messages pull-right">
+
+  </div>
+
+</div>

@@ -1,0 +1,16 @@
+.chatbox{
+  min-height: 800px;
+  background-color: blue;
+}
+
+.user-list{
+  margin: 20px 0 0 20px;
+  min-height: 760px;
+  background-color: white;
+}
+
+.messages {
+  margin: 20px 20px 0 0;
+  min-height: 760px;
+  background-color: white;
+}

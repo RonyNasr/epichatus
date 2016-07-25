@@ -7,7 +7,8 @@ gem("async_sinatra")
 gem("rake")
 gem("pg")
 gem("private_pub")
-gem("devise")
+gem("thin")
+gem("faye")
 gem("pry")
 
 group(:test) do
