@@ -1,0 +1,18 @@
+body {
+  margin: auto;
+  display: block;
+}
+
+header {
+  width: 100%;
+}
+nav {
+  width: inherit;
+}
+ul {
+  list-style-type: none;
+}
+
+li {
+  display: inline;
+}
