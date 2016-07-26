@@ -1,18 +1,131 @@
+/*
+Project Name: Epichat
+Client: Ruby Epicodus
+Author: Liam Ellis, Aestheke Inc.
+
+/* Box Model Hack */
+* {
+     -moz-box-sizing: border-box; /* Firexfox */
+     -webkit-box-sizing: border-box; /* Safari/Chrome/iOS/Android */
+     box-sizing: border-box; /* IE */
+}
+
+/* Clear fix hack */
+.clearfix:after {
+     content: ".";
+     display: block;
+     clear: both;
+     visibility: hidden;
+     line-height: 0;
+     height: 0;
+}
+.clear {clear: both;}
+
+@font-face {
+  font-family: earth;
+  src: url(../earth.ttf);
+}
+@font-face {
+  font-family: future;
+  src: url(../future.ttf);
+}
 body {
   margin: auto;
   display: block;
 }
-
+.index_background {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -5;
+  background: url(../background.jpeg) no-repeat center center fixed;
+ -webkit-background-size: cover;
+ -moz-background-size: cover;
+ -o-background-size: cover;
+ background-size: 105% 100%;
+}
+.layer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  top: 0;
+  left: 0;
+  background-color: rgba(0,0,0,0.2);
+}
 header {
   width: 100%;
 }
 nav {
-  width: inherit;
-}
-ul {
-  list-style-type: none;
+  width: 100%;
+  margin-top: 2%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 li {
   display: inline;
+  flex-grow: 1;
+  font-family: future;
+  line-height: 32px;
+  font-size: 15px;
+  color: white;
+  text-align: center;
+}
+li:hover {
+  text-shadow: 1px 1px 1px white;
+}
+a, a:hover {
+  color: inherit;
+  text-decoration: none;
+}
+main {
+  position: relative;
+  top: 45%;
+  display: block;
+  margin: auto;
+}
+.title {
+  font-family: earth;
+  font-size: 50px;
+  text-align: center;
+  text-shadow: 1px 1px 1px white;
+}
+.login, .signin {
+  margin: auto;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  padding: 2%;
+  left: 0;
+  bottom: 50px;
+  color: white;
+  font-family: future;
+  display: none;
+}
+.signin {
+  bottom: 10px;
+}
+#log, #sign {
+  display: block;
+}
+#log input, #sign input {
+  background-color: transparent;
+  border: gray;
+  border-bottom: 1px solid white;
+}
+#log label, #sign label {
+  margin: 1%;
+}
+.user_button {
+  margin: 2%;
+  border: none;
+  background-color: transparent;
+}
+.glyphicon {
+  font-size: 25px;
+  color: white;
 }

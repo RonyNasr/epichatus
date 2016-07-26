@@ -7,6 +7,14 @@ get '/' do
   erb(:index)
 end
 
+get '/signup' do
+  erb :signin
+end
+
+get '/login' do
+  erb :login
+end
+
 post '/signup/?' do
   if User.find_by email: params['signup_email']
     'That email is already registered to an account'
@@ -23,8 +31,10 @@ end
 
 post '/login/?' do
   if user = User.authenticate(params)
-    session[:user] = user
-    redirect_to_original_request
+    # session[:user] = user
+    # redirect_to_original_request
+    @user = user
+    erb(:user)
   else
     flash[:notice] = "You could not be signed in. Please re-enter you email and password"
     redirect '/signin'

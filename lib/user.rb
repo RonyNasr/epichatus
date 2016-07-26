@@ -3,8 +3,8 @@ class User < ActiveRecord::Base
   validates(:username, :presence => true)
   validates(:email, :presence => true)
   validates(:password, :presence => true)
-  include BCrypt
   has_many(:conversations, :foreign_key => :sender_id)
+  include BCrypt
 
   def self.authenticate(params = {})
     email = params[:email]
