@@ -1,4 +1,3 @@
-
 /*
 Project Name: Epichat
 Client: Ruby Epicodus
@@ -84,7 +83,6 @@ nav {
 #user_home {
   text-align: right;
 }
-
 li {
   display: inline;
   flex-grow: 1;
@@ -113,6 +111,17 @@ main {
   text-align: center;
   text-shadow: 1px 1px 1px white;
 }
+.notice {
+  margin: auto;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  padding: 2%;
+  left: 0;
+  bottom: 200px;
+  color: white;
+  font-family: future;
+}
 .login, .signin {
   margin: auto;
   position: absolute;
@@ -138,6 +147,13 @@ main {
 }
 #log label, #sign label {
   margin: 1%;
+}
+#signout {
+  background:none!important;
+  border:none;
+  padding:0!important;
+  font: inherit;
+  cursor: pointer;
 }
 .user_button {
   margin: 2%;
@@ -214,3 +230,4 @@ main {
 }
 .messages h1 {
   text-shadow: 1px 1px 1px gray;
+}

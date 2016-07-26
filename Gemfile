@@ -3,7 +3,6 @@ source("https://rubygems.org")
 gem("sinatra")
 gem("sinatra-contrib", :require => "sinatra/reloader")
 gem("sinatra-activerecord", :require => "sinatra/activerecord")
-
 gem('sinatra-flash')
 gem("async_sinatra")
 gem('bcrypt')
