@@ -2,8 +2,11 @@
 <html>
   <head>
     <title>EpiChat</title>
+
+    <meta content='<%= user_signed_in? ? current_user.id : "" %>' name='user-id'/>
     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
     <link rel="stylesheet" href="/css/styles.css" media="screen" title="no title" charset="utf-8">
+    <script src="<%= javascript_include_tag 'private_pub' %>"></script>
   </head>
   <body>
     <div class="container">
