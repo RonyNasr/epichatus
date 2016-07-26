@@ -12,6 +12,8 @@ gem("private_pub")
 gem("pry")
 gem("sequel")
 gem("rack-flash3")
+gem("thin")
+gem("faye")
 gem("sinatra-authentication", :require => "digest/sha1")
 
 group(:test) do

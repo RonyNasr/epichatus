@@ -132,7 +132,7 @@ main {
   bottom: 50px;
   color: white;
   font-family: future;
-  display: none
+  display: none;
 }
 .signin {
   bottom: 10px;
@@ -172,6 +172,11 @@ main {
   font-family: better;
   color: white;
   font-size: 60px;
+}
+/*add this on the chat button click*/
+/*style li tabs on the bottom of browser for every current chat, facebook style*/
+.underline {
+  font-style: underline;
 }
 .profile {
   height: 40px;

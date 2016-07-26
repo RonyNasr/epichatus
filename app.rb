@@ -10,6 +10,11 @@ use Rack::Session::Cookie, :key => 'rack.session',
                            :secret => 'secrets_are_no_fun'
 use Rack::Flash
 
+Bundler.require(:default)
+Dir[File.dirname(__FILE__) + '/lib/*.rb'].each { |file| require file }
+
+include BCrypt
+
 get '/' do
   erb(:index)
 end

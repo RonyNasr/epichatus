@@ -14,6 +14,7 @@ window.onload= function(){
     $('.login').hide();
     $('.error').hide();
   });
+
   $chats.click(function(){
     console.log('im fucking clicking');
     $('.chat_div').slideToggle(500);
