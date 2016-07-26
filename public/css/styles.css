@@ -156,6 +156,11 @@ main {
   color: white;
   font-size: 60px;
 }
+/*add this on the chat button click*/
+/*style li tabs on the bottom of browser for every current chat, facebook style*/
+.underline {
+  font-style: underline;
+}
 .profile {
   height: 40px;
   width: 40px;
