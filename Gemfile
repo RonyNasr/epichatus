@@ -3,6 +3,7 @@ source("https://rubygems.org")
 gem("sinatra")
 gem("sinatra-contrib", :require => "sinatra/reloader")
 gem("sinatra-activerecord", :require => "sinatra/activerecord")
+
 gem('sinatra-flash')
 gem("async_sinatra")
 gem('bcrypt')
@@ -12,6 +13,8 @@ gem("private_pub")
 gem("pry")
 gem("sequel")
 gem("rack-flash3")
+gem("thin")
+gem("faye")
 gem("sinatra-authentication", :require => "digest/sha1")
 
 group(:test) do
