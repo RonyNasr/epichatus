@@ -148,7 +148,7 @@ main {
 #log label, #sign label {
   margin: 1%;
 }
-#signout {
+#signout, .users {
   background:none!important;
   border:none;
   padding:0!important;

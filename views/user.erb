@@ -16,18 +16,29 @@
 <div class="dashboard">
   <h2><span class="profile"><img src="../profile.png" alt="" /></span><%=@user.username %><span id="chats">+</span></h2>
   <div class="chat_div">
-    <ul class="chats">
-      <li class="chat"> <img src="../chat.png" alt="" />Rony</li>
-      <li class="chat"> <img src="../chat.png" alt="" />
-        <%= link_to "Send Message", "#", class: "start-conversation",
-          "data-sid" => current_user.id, "data-rip" => user.id %>
-      </li>
-      <li class="chat"> <img src="../chat.png" alt="" />Katie</li>
-      <li class="chat"> <img src="../chat.png" alt="" />Sebastien</li>
-    </ul>
+    <% if @users.any? %>
+      <ul class="chats">
+        <% @users.each do |user| %>
+          <li class="chat"> <img src="../chat.png" alt="" />
+            <form class="start-conversation" action="/conversation" method="post">
+              <input type="hidden" name="data-sid" value="<%=session[:id]%>">
+              <input type="hidden" name="data-rid" value="<%=user.id%>">
+              <button class="users" type="submit" name="button"><%=user.username()%></button>
+            </form>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
   </div>
 </div>
 
+<div class="conversations">
+  <% if @user.conversations.any? %>
+    <% @user.conversations.each do |conversation| %>
+      <p>Conversation between <%= conversation.sender_id %> and <%= conversation.recipient_id %></p>
+    <% end %>
+  <% end %>
+</div>
 <div class="messages">
   <li class="arrow">^</li>
   <li class="arrow">^</li>
