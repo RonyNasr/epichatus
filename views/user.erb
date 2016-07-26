@@ -1,2 +1,21 @@
-<h3>Your Dashboard</h3>
-<h2><%=@user.username %></h2>
+<header>
+  <nav id="user_nav">
+    <li id="dashboard">Dashboard</li>
+    <li id="user_home"><a href="/">HOME</a> <span class="glyphicon glyphicon-home"></span></li>
+  </nav>
+</header>
+
+<div class="index_background">
+  <div class="layer">
+  </div>
+</div>
+<div class="dashboard">
+  <h2><span class="profile"><img src="../profile.png" alt="" /></span><%=@user.username %><span id="chats">+</span></h2>
+  <div class="chat_div">
+    <ul class="chats">
+      <li class="chat"> <img src="../chat.png" alt="" />Rony</li>
+      <li class="chat"> <img src="../chat.png" alt="" />Katie</li>
+      <li class="chat"> <img src="../chat.png" alt="" />Sebastien</li>
+    </ul>
+  </div>
+</div>

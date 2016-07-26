@@ -9,8 +9,6 @@ Author: Liam Ellis, Aestheke Inc.
      -webkit-box-sizing: border-box; /* Safari/Chrome/iOS/Android */
      box-sizing: border-box; /* IE */
 }
-
-/* Clear fix hack */
 .clearfix:after {
      content: ".";
      display: block;
@@ -28,6 +26,14 @@ Author: Liam Ellis, Aestheke Inc.
 @font-face {
   font-family: future;
   src: url(../future.ttf);
+}
+@font-face {
+  font-family: bira;
+  src: url(../bira.ttf);
+}
+@font-face {
+  font-family: better;
+  src: url(../better.ttf);
 }
 body {
   margin: auto;
@@ -65,6 +71,18 @@ nav {
   flex-wrap: wrap;
   justify-content: center;
 }
+#user_nav {
+  margin-top: 4%;
+}
+#dashboard {
+  font-family: bira;
+  font-size: 50px;
+  color: white;
+  text-align: left;
+}
+#user_home {
+  text-align: right;
+}
 
 li {
   display: inline;
@@ -78,7 +96,7 @@ li {
 li:hover {
   text-shadow: 1px 1px 1px white;
 }
-a, a:hover {
+a, a:hover, a:after, a:focus {
   color: inherit;
   text-decoration: none;
 }
@@ -128,4 +146,46 @@ main {
 .glyphicon {
   font-size: 25px;
   color: white;
+}
+.dashboard {
+  margin-top: 20%;
+}
+
+.dashboard h2 {
+  font-family: better;
+  color: white;
+  font-size: 60px;
+}
+.profile {
+  height: 40px;
+  width: 40px;
+  margin: 10px;
+}
+
+/*****************************************************/
+/*chats*/
+#chats {
+  margin-left: 15px;
+  cursor: pointer;
+}
+.chat_div {
+  display: none;
+}
+.chat_div, .chats {
+  width: max-content;
+}
+.chats {
+  margin-left: 30px;
+}
+.chat {
+  display: block;
+  font-family: future;
+  font-size: 15px;
+  text-align: left;
+  margin-left: 60px;
+}
+.chat img {
+  height: 20px;
+  width: 20px;
+  margin-right: 10px;
 }
