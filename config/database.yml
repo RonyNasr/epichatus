@@ -1,0 +1,6 @@
+development:
+  adapter: postgresql
+  database: epichatus
+test:
+  adapter: postgresql
+  database: epichatus_test

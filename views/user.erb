@@ -1,0 +1,32 @@
+<header>
+  <nav id="user_nav">
+    <li id="dashboard">Dashboard...</li>
+    <li id="user_home">
+      <form class="" action="/logout/?" method="post">
+        <button id="signout" type="submit" name="button">SIGN OUT<span class="glyphicon glyphicon-home"></button>
+      </form>
+    </li>
+  </nav>
+</header>
+
+<div class="index_background">
+  <div class="layer">
+  </div>
+</div>
+<div class="dashboard">
+  <h2><span class="profile"><img src="../profile.png" alt="" /></span><%=@user.username %><span id="chats">+</span></h2>
+  <div class="chat_div">
+    <ul class="chats">
+      <li class="chat"> <img src="../chat.png" alt="" />Rony</li>
+      <li class="chat"> <img src="../chat.png" alt="" />Katie</li>
+      <li class="chat"> <img src="../chat.png" alt="" />Sebastien</li>
+    </ul>
+  </div>
+</div>
+
+<div class="messages">
+  <li class="arrow">^</li>
+  <li class="arrow">^</li>
+  <li class="arrow">^</li>
+  <h1>Chat...</h1>
+</div>
