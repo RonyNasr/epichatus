@@ -56,12 +56,12 @@ var ready = function () {
      * conversation chatbox
      */
 
-    // $('a.conversation').click(function (e) {
-    //     e.preventDefault();
-    //
-    //     var conversation_id = $(this).data('cid');
-    //     chatBox.chatWith(conversation_id);
-    // });
+    $('a.conversation').click(function (e) {
+        e.preventDefault();
+
+        var conversation_id = $(this).data('cid');
+        chatBox.chatWith(conversation_id);
+    });
 
 
 }
