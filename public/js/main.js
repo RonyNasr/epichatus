@@ -1,4 +1,4 @@
-$(document).ready(function(){
+window.onload= function(){
   console.log('What up');
   var $login = $('#login');
   var $signin = $('#signin');
@@ -14,4 +14,10 @@ $(document).ready(function(){
     console.log('im fucking clicking');
     $('.chat_div').slideToggle(500);
   });
-});
+
+  // $('.layer').animate({
+  //     'opacity': 1
+  // }, 2000);
+
+
+};
