@@ -19,13 +19,15 @@
     <% if @users.any? %>
       <ul class="chats">
         <% @users.each do |user| %>
-          <li class="chat"> <img src="../chat.png" alt="" />
-            <form class="start-conversation" action="/conversation" method="post">
-              <input type="hidden" name="data-sid" value="<%=session[:id]%>">
-              <input type="hidden" name="data-rid" value="<%=user.id%>">
-              <button class="users" type="submit" name="button"><%=user.username()%></button>
-            </form>
-          </li>
+          <%if user != @user %>
+            <li class="chat"> <img src="../chat.png" alt="" />
+              <form class="start-conversation" action="/conversation" method="post">
+                <input type="hidden" name="data-sid" value="<%=session[:id]%>">
+                <input type="hidden" name="data-rid" value="<%=user.id%>">
+                <button class="users" type="submit" name="button"><%=user.username()%></button>
+              </form>
+            </li>
+          <% end %>
         <% end %>
       </ul>
     <% end %>
@@ -33,13 +35,13 @@
 </div>
 
 <div class="chat-wrapper">
-  <% if @user.conversations.any? %>
-    <% @user.conversations.each do |conversation| %>
+  <% if @conversations.any? %>
+    <% @conversations.each do |conversation| %>
       <section class="module">
         <header class="top-bar">
           <div class="left">
             <span class="icon typicons-message"></span>
-            <h1>Hangouts</h1>
+            <h1><%= User.find(conversation.recipient_id()).username() %></h1>
           </div>
           <div class="right">
             <a class="minus" href="#"><span class="icon typicons-minus"></span></a>
@@ -48,15 +50,19 @@
           </div>
         </header>
         <ol class="discussion">
-          <li class="other">
-            <div class="avatar">
-              <img src="./profile.png" alt="profile avater"/>
-            </div>
-            <div class="messages">
-              <p>yeah, they do early flights cause they connect with big airports.  they wanna get u to your connection</p>
-              <time datetime="2009-11-13T20:00">Timothy • 51 min</time>
-            </div>
-          </li>
+          <% if conversation.messages.any?() %>
+            <% conversation.messages.each do |message| %>
+              <li class="<%= (message.user_id()== @user.id())? "other" : "self"  %>">
+                <div class="avatar">
+                  <img src="./profile.png" alt="profile avatar"/>
+                </div>
+                <div class="messages">
+                  <p> <%= message.body() %> </p>
+                </div>
+              </li>
+            <% end %>
+          <% end %>
+
           <li class="self">
             <div class="avatar">
               <img src="./profile.png" alt="profile avater"/>
