@@ -14,5 +14,18 @@ end
 
 get('/') do
   @users = User.all()
-  erb(:"index.html")
+
+  erb(:index)
+end
+
+post("/conversations") do
+
+  if Conversation.between(params[:sender_id],params[:recipient_id]).present?
+         @conversation = Conversation.between(params[:sender_id],params[:recipient_id]).first
+  else
+     @conversation = Conversation.create!(:sender_id => params[:sender_id],:recipient_id => params[:recipient_id])
+  end
+   @users = User.all()
+
+   erb(:index)
 end

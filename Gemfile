@@ -6,10 +6,10 @@ gem("sinatra-activerecord", :require => "sinatra/activerecord")
 gem("async_sinatra")
 gem("rake")
 gem("pg")
-gem("private_pub")
 gem("thin")
 gem("faye")
 gem("pry")
+gem("javascript")
 
 group(:test) do
   gem("rspec")
