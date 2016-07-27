@@ -1,1 +1,6 @@
 #Just some notes so I can do a commit
+
+<li class="chat"> <img src="../chat.png" alt="" />
+  <%= link_to "Send Message", "#", class: "start-conversation",
+    "data-sid" => current_user.id, "data-rip" => user.id %>
+</li>

@@ -15,6 +15,7 @@ gem("sequel")
 gem("rack-flash3")
 gem("thin")
 gem("faye")
+gem('require_all')
 gem("sinatra-authentication", :require => "digest/sha1")
 
 group(:test) do
