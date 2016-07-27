@@ -170,7 +170,7 @@ main {
   color: white;
 }
 .dashboard {
-  margin-top: 20%;
+  margin-top: 10%;
   width: max-content;
 }
 
@@ -329,7 +329,7 @@ a.plus {
   }
 }
 /*****************************************************/
-/*chats*/
+/*users*/
 #chats {
   margin-left: 15px;
   cursor: pointer;
@@ -365,13 +365,13 @@ a.plus {
   font-family: earth;
   color: white;
 }*/
-.arrow{
+/*.arrow{
   font-family: future;
   font-size: 100px;
   line-height: 0;
   display: block;
 
-}
+}*/
 /*.messages h1 {
   text-shadow: 1px 1px 1px gray;
 }*/
