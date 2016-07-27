@@ -22,7 +22,7 @@ end
 get '/user' do
   if User.find_by_id(session[:id])
     @user = User.find(session[:id])
-    @users = User.all() - @user
+    @users = User.all()
     erb(:user)
   else
     flash[:notice] = "You have been signed out due to inactivity"
@@ -64,9 +64,9 @@ end
 
 post '/conversation' do
   @conversation = Conversation.create({sender_id: params['data-sid'], recipient_id: params['data-rid']})
-  user = User.find(session[:id])
-  user.conversations.push(@conversation)
-  other_user = User.find(params['data-rid'])
-  other_user.conversations.push(@conversation)
+  @user = User.find(session[:id])
+  @user.conversations.push(@conversation)
+  @other_user = User.find(params['data-rid'])
+  @other_user.conversations.push(@conversation)
   redirect '/user'
 end

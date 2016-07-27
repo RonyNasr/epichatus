@@ -1,5 +1,4 @@
 window.onload= function(){
-  console.log('What up');
   var $login = $('#login');
   var $signin = $('#signin');
   var $chats = $('#chats');
@@ -14,10 +13,25 @@ window.onload= function(){
     $('.login').hide();
     $('.error').hide();
   });
-
   $chats.click(function(){
-    console.log('im fucking clicking');
+    console.log('user list revealed');
     $('.chat_div').slideToggle(500);
+  });
+  $('.chat').click(function(){
+    $(this)
+  });
+  $('.minus').click(function(){
+    $(this).closest("section").children(".discussion").toggle();
+    $(this).siblings(".plus").show();
+    $(this).hide();
+  });
+  $('.plus').click(function(){
+    $(this).closest("section").children(".discussion").toggle();
+    $(this).siblings(".minus").show();
+    $(this).hide();
+  });
+  $('.exit').click(function(){
+    $(this).closest("section").toggle();
   });
 
   // $('.layer').animate({
