@@ -10,12 +10,18 @@ use Rack::Session::Cookie, :key => 'rack.session',
                            :secret => 'secrets_are_no_fun'
 use Rack::Flash
 
-Bundler.require(:default)
-Dir[File.dirname(__FILE__) + '/lib/*.rb'].each { |file| require file }
+helpers do
+  def faye_path
+    "#{request.scheme}://#{request.host}:9292/faye"
+  end
 
-include BCrypt
+  def faye_js_path
+    faye_path + ".js"
+  end
+end
 
-get '/' do
+get('/') do
+  @users = User.all()
   erb(:index)
 end
 
