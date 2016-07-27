@@ -153,7 +153,7 @@ main {
 #log label, #sign label {
   margin: 1%;
 }
-#signout, .users {
+#signout, .users, .exit {
   background:none!important;
   border:none;
   padding:0!important;
@@ -173,7 +173,6 @@ main {
   margin-top: 10%;
   width: max-content;
 }
-
 .dashboard h2 {
   font-family: better;
   color: white;
@@ -226,6 +225,19 @@ main {
 }
 a.plus {
   display: none;
+}
+.exit_form {
+  display: inline-block;
+  margin-bottom: 0;
+}
+.text_input {
+  align-self: flex-end;
+  width: 300px;
+  box-shadow: inset 0px 0px 10px 0px #ABABAB;
+    -webkit-box-shadow: inset 0px 0px 10px 0px #ABABAB;
+    -moz-box-shadow: inset 0px 0px 10px 0px #ABABAB;
+    -o-box-shadow: inset 0px 0px 10px 0px #ABABAB;
+  height: auto;
 }
 .top-bar .left {
   float: left;

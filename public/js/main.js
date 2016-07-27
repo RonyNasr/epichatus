@@ -14,25 +14,24 @@ window.onload= function(){
     $('.error').hide();
   });
   $chats.click(function(){
-    console.log('user list revealed');
     $('.chat_div').slideToggle(500);
   });
   $('.chat').click(function(){
     $(this)
   });
   $('.minus').click(function(){
-    $(this).closest("section").children(".discussion").toggle();
+    $(this).closest("section").children(".discussion_with_input").toggle();
     $(this).siblings(".plus").show();
     $(this).hide();
   });
   $('.plus').click(function(){
-    $(this).closest("section").children(".discussion").toggle();
+    $(this).closest("section").children(".discussion_with_input").toggle();
     $(this).siblings(".minus").show();
     $(this).hide();
   });
-  $('.exit').click(function(){
-    $(this).closest("section").toggle();
-  });
+  // $('.exit').click(function(){
+  //   $(this).closest("section").toggle();
+  // });
 
   // $('.layer').animate({
   //     'opacity': 1
