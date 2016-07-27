@@ -1,16 +1,377 @@
-.chatbox{
-  min-height: 800px;
-  background-color: blue;
+@import url(http://weloveiconfonts.com/api/?family=typicons);
+[class*="typicons-"]:before {
+  font-family: 'Typicons', sans-serif;
 }
 
-.user-list{
-  margin: 20px 0 0 20px;
-  min-height: 760px;
-  background-color: white;
+/*
+Project Name: Epichat
+Client: Ruby Epicodus
+Author: Liam Ellis, Aestheke Inc.
+
+/* Box Model Hack */
+* {
+     -moz-box-sizing: border-box; /* Firexfox */
+     -webkit-box-sizing: border-box; /* Safari/Chrome/iOS/Android */
+     box-sizing: border-box; /* IE */
+}
+.clearfix:after {
+     content: ".";
+     display: block;
+     clear: both;
+     visibility: hidden;
+     line-height: 0;
+     height: 0;
+}
+.clear {clear: both;}
+
+@font-face {
+  font-family: earth;
+  src: url(../earth.ttf);
+}
+@font-face {
+  font-family: future;
+  src: url(../future.ttf);
+}
+@font-face {
+  font-family: bira;
+  src: url(../bira.ttf);
+}
+@font-face {
+  font-family: better;
+  src: url(../better.ttf);
+}
+body {
+  margin: auto;
+  display: block;
+}
+.index_background {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -5;
+  background: url(../background.jpeg) no-repeat center center fixed;
+ -webkit-background-size: cover;
+ -moz-background-size: cover;
+ -o-background-size: cover;
+ background-size: 105% 100%;
+}
+.layer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  top: 0;
+  left: 0;
+  background-color: rgba(0,0,0,0.2);
+}
+header {
+  width: 100%;
+}
+nav {
+  width: 100%;
+  margin-top: 2%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+#user_nav {
+  margin-top: 4%;
+}
+#dashboard {
+  font-family: bira;
+  font-size: 50px;
+  color: white;
+  text-align: left;
+}
+#user_home {
+  text-align: right;
+}
+li {
+  display: inline;
+  flex-grow: 1;
+  font-family: future;
+  line-height: 32px;
+  font-size: 15px;
+  color: white;
+  text-align: center;
+}
+li:hover {
+  text-shadow: 1px 1px 1px white;
+}
+a, a:hover, a:after, a:focus {
+  color: inherit;
+  text-decoration: none;
+}
+main {
+  position: relative;
+  top: 45%;
+  display: block;
+  margin: auto;
+}
+.title {
+  font-family: earth;
+  font-size: 50px;
+  text-align: center;
+  text-shadow: 1px 1px 1px white;
+}
+.notice {
+  margin: auto;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  padding: 2%;
+  left: 0;
+  bottom: 200px;
+  color: white;
+  font-family: future;
+}
+.login, .signin {
+  margin: auto;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  padding: 2%;
+  left: 0;
+  bottom: 50px;
+  color: white;
+  font-family: future;
+  display: none;
+}
+.signin {
+  bottom: 10px;
+}
+#log, #sign {
+  display: block;
+}
+#log input, #sign input {
+  background-color: transparent;
+  border: gray;
+  border-bottom: 1px solid white;
+}
+#log label, #sign label {
+  margin: 1%;
+}
+#signout, .users {
+  background:none!important;
+  border:none;
+  padding:0!important;
+  font: inherit;
+  cursor: pointer;
+}
+.user_button {
+  margin: 2%;
+  border: none;
+  background-color: transparent;
+}
+.glyphicon {
+  font-size: 25px;
+  color: white;
+}
+.dashboard {
+  margin-top: 10%;
+  width: max-content;
 }
 
+.dashboard h2 {
+  font-family: better;
+  color: white;
+  font-size: 60px;
+}
+/*add this on the chat button click*/
+/*style li tabs on the bottom of browser for every current chat, facebook style*/
+.underline {
+  font-style: underline;
+}
+.profile {
+  height: 40px;
+  width: 40px;
+  margin: 10px;
+}
+
+/*****************************************************/
+/*conversations*/
+
+.chat-wrapper {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  display: flex;
+  width: 100%;
+}
+.module {
+  width: 300px;
+  margin: 20px;
+  align-self: flex-end;
+}
+.top-bar {
+  background: #666;
+  color: white;
+  padding: 0.5rem;
+  position: relative;
+  overflow: hidden;
+}
+.top-bar h1 {
+  display: inline;
+  font-size: 1.1rem;
+}
+.top-bar .typicons-message {
+  display: inline-block;
+  padding: 4px 5px 2px 5px;
+}
+.top-bar .typicons-minus {
+  position: relative;
+  top: 3px;
+}
+a.plus {
+  display: none;
+}
+.top-bar .left {
+  float: left;
+}
+.top-bar .right {
+  float: right;
+  padding-top: 5px;
+}
+.top-bar > * {
+  position: relative;
+}
+.top-bar::before {
+  content: "";
+  position: absolute;
+  top: -100%;
+  left: 0;
+  right: 0;
+  bottom: -100%;
+  opacity: 0.25;
+  background: radial-gradient(#ffffff, #000000);
+  animation: pulse 1s ease alternate infinite;
+}
+.discussion {
+  list-style: none;
+  background: #e5e5e5;
+  margin: 0;
+  padding: 0 0 50px 0;
+}
+.discussion li {
+  padding: 0.5rem;
+  overflow: hidden;
+  display: flex;
+}
+.discussion .avatar {
+  width: 10%;
+  position: relative;
+}
+.discussion .avatar img {
+  display: block;
+  width: 100%;
+}
+.other .avatar:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border: 5px solid white;
+  border-left-color: transparent;
+  border-bottom-color: transparent;
+}
+.self {
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+.self .messages {
+  order: 1;
+  border-bottom-right-radius: 0;
+}
+.self .avatar {
+  order: 2;
+}
+.self .avatar:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border: 5px solid white;
+  border-right-color: transparent;
+  border-top-color: transparent;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
 .messages {
-  margin: 20px 20px 0 0;
-  min-height: 760px;
-  background-color: white;
+  width: 90%;
+  color: black;
+  text-align: left;;
+  background: white;
+  padding: 10px;
+  border-radius: 2px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
+.messages p {
+  font-size: 0.8rem;
+  margin: 0 0 0.2rem 0;
+  line-height: 2em;
+  letter-spacing: .1em;
+}
+.messages time {
+  font-size: 0.7rem;
+  color: #ccc;
+}
+@keyframes pulse {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.5;
+  }
+}
+/*****************************************************/
+/*users*/
+#chats {
+  margin-left: 15px;
+  cursor: pointer;
+}
+.chat_div {
+  display: none;
+}
+.chat_div, .chats {
+  width: max-content;
+}
+.chats {
+  margin-left: 30px;
+}
+.chat {
+  display: block;
+  font-family: future;
+  font-size: 15px;
+  text-align: left;
+  margin-left: 60px;
+}
+.chat img {
+  height: 20px;
+  width: 20px;
+  margin-right: 10px;
+}
+
+/*.messages {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  text-align: center;
+  font-family: earth;
+  color: white;
+}*/
+/*.arrow{
+  font-family: future;
+  font-size: 100px;
+  line-height: 0;
+  display: block;
+
+}*/
+/*.messages h1 {
+  text-shadow: 1px 1px 1px gray;
+}*/

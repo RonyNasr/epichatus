@@ -1,0 +1,90 @@
+<header>
+  <nav id="user_nav">
+    <li id="dashboard">Dashboard...</li>
+    <li id="user_home">
+      <form class="" action="/logout/?" method="post">
+        <button id="signout" type="submit" name="button">SIGN OUT<span class="glyphicon glyphicon-home"></button>
+      </form>
+    </li>
+  </nav>
+</header>
+
+<div class="index_background">
+  <div class="layer">
+  </div>
+</div>
+<div class="dashboard">
+  <h2><span class="profile"><img src="../profile.png" alt="" /></span><%=@user.username %><span id="chats">+</span></h2>
+  <div class="chat_div">
+    <% if @users.any? %>
+      <ul class="chats">
+        <% @users.each do |user| %>
+          <li class="chat"> <img src="../chat.png" alt="" />
+            <form class="start-conversation" action="/conversation" method="post">
+              <input type="hidden" name="data-sid" value="<%=session[:id]%>">
+              <input type="hidden" name="data-rid" value="<%=user.id%>">
+              <button class="users" type="submit" name="button"><%=user.username()%></button>
+            </form>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+</div>
+
+<div class="chat-wrapper">
+  <% if @user.conversations.any? %>
+    <% @user.conversations.each do |conversation| %>
+      <section class="module">
+        <header class="top-bar">
+          <div class="left">
+            <span class="icon typicons-message"></span>
+            <h1>Hangouts</h1>
+          </div>
+          <div class="right">
+            <a class="minus" href="#"><span class="icon typicons-minus"></span></a>
+            <a class="plus" href="#"><span class="icon typicons-plus"></span></a>
+            <a class="exit" href="#"><span class="icon typicons-times"></span></a>
+          </div>
+        </header>
+        <ol class="discussion">
+          <li class="other">
+            <div class="avatar">
+              <img src="./profile.png" alt="profile avater"/>
+            </div>
+            <div class="messages">
+              <p>yeah, they do early flights cause they connect with big airports.  they wanna get u to your connection</p>
+              <time datetime="2009-11-13T20:00">Timothy • 51 min</time>
+            </div>
+          </li>
+          <li class="self">
+            <div class="avatar">
+              <img src="./profile.png" alt="profile avater"/>
+            </div>
+            <div class="messages">
+              <p>That makes sense.</p>
+              <p>It's a pretty small airport.</p>
+              <time datetime="2009-11-13T20:14">37 mins</time>
+            </div>
+          </li>
+          <li class="other">
+            <div class="avatar">
+              <img src="./profile.png" alt="profile avater"/>
+            </div>
+            <div class="messages">
+              <p>that mongodb thing looks good, huh?</p>
+              <p>tiny master db, and huge document store</p>
+            </div>
+          </li>
+        </ol>
+        </section>
+    <% end %>
+  <% end %>
+</div>
+
+<!-- <div class="messages">
+  <li class="arrow">^</li>
+  <li class="arrow">^</li>
+  <li class="arrow">^</li>
+  <h1>Chat...</h1>
+</div> -->

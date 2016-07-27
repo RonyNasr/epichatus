@@ -10,6 +10,8 @@ var ready = function () {
         e.preventDefault();
         var sender_id = 1;
         var recipient_id = 2;
+        // var sender_id = $(this).data('sid');
+        // var recipient_id = $(this).data('rid');
 
         $.post("/conversations", { sender_id: sender_id, recipient_id: recipient_id }, function (data) {
              chatBox.chatWith(data.conversation_id);

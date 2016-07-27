@@ -1,33 +1,41 @@
-<div class="row chatbox">
-  <div class="col-sm-4 user-list">
-    <div class="list-group">
-      <% if @users.any?() %>
-        <% @users.each() do |user| %>
-          <a href="#" class="start-conversation list-group-item" value="user.id()"><%= user.username() %></a>
-        <% end %>
-      <% end %>
+<header>
+  <nav>
+    <li><a id="login" href="#">LOGIN</a> </li>
+    <li><a id="signin" href="#">SIGN UP</a> </li>
+  </nav>
+</header>
 
-    </div>
-
-
-
+<div class="index_background">
+  <div class="layer">
+    <main>
+      <h1 class="title">EpiChat</h1>
+    </main>
   </div>
-  <div class="col-sm-7 chat-box pull-right">
-    <div class="chat-box-content">
-      <% if @conversation && @conversation.messages.any?() %>
-      <ol>
-        <% @conversation.messages.each() do |message| %>
-        <li><%= message.body() %></li>
-        <% end  %>
-      </ol>
+</div>
 
-      <% else %>
-      <p>
-        click a name to start chatting
-      </p>
-      <% end %>
+<div class="notice">
+  <% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+  <% end %>
+</div>
 
-    </div>
-  </div>
-
+<div class="login">
+  <form id="log" action="/login" method="post">
+    <label for="email">Email</label><br>
+    <input type="text" name="email"><br>
+    <label for="password">Password</label><br>
+    <input type="password" name="password" type="password"><br>
+    <button class="user_button" type="submit" name="button"><span class="glyphicon glyphicon-pencil"></span></button>
+  </form>
+</div>
+<div class="signin">
+  <form id="sign" action="/signup" method="post">
+    <label for="signup_username">Username</label><br>
+    <input type="text" name="signup_username"><br>
+    <label for="signup_email">Email</label><br>
+    <input type="text" name="signup_email"><br>
+    <label for="signup_password">Password</label><br>
+    <input type="password" name="signup_password"><br>
+    <button class="user_button" type="submit" name="button"><span class="glyphicon glyphicon-pencil"></span></button>
+  </form>
 </div>

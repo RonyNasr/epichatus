@@ -1,6 +1,14 @@
 require("bundler/setup")
+require 'rack-flash'
 Bundler.require(:default)
 Dir[File.dirname(__FILE__) + '/lib/*.rb'].each { |file| require file }
+include BCrypt
+
+use Rack::Session::Cookie, :key => 'rack.session',
+                           :path => '/',
+                           :expire_after => 3600, # Signs out after 1 hour of inactivity
+                           :secret => 'secrets_are_no_fun'
+use Rack::Flash
 
 helpers do
   def faye_path
@@ -14,18 +22,57 @@ end
 
 get('/') do
   @users = User.all()
-
   erb(:index)
 end
 
-post("/conversations") do
-
-  if Conversation.between(params[:sender_id],params[:recipient_id]).present?
-         @conversation = Conversation.between(params[:sender_id],params[:recipient_id]).first
+get '/user' do
+  if User.find_by_id(session[:id])
+    @user = User.find(session[:id])
+    @users = User.all()
+    erb(:user)
   else
-     @conversation = Conversation.create!(:sender_id => params[:sender_id],:recipient_id => params[:recipient_id])
+    flash[:notice] = "You have been signed out due to inactivity"
+    redirect '/'
   end
-   @users = User.all()
+end
 
-   erb(:index)
+post '/signup/?' do
+  if User.find_by email: params['signup_email']
+    flash[:notice] = "That email is already registered to an account"
+    redirect '/'
+  elsif User.find_by username: params['signup_username']
+    flash[:notice] = 'That username is taken'
+    redirect '/'
+  else
+    secure_password = Password.create(params['signup_password'])
+    @user = User.create({username: params['signup_username'], email: params['signup_email'], password: secure_password})
+    session[:id] = @user.id
+    redirect '/user'
+  end
+end
+
+post '/login/?' do
+  if user = User.authenticate(params)
+    @user = user
+    session[:id] = @user.id
+    redirect '/user'
+  else
+    flash[:notice] = "Invalid username or password."
+    redirect '/'
+  end
+end
+
+post '/logout/?' do
+  session.clear
+  flash[:notice] = "You have succesfully signed out"
+  redirect '/'
+end
+
+post '/conversation' do
+  @conversation = Conversation.create({sender_id: params['data-sid'], recipient_id: params['data-rid']})
+  @user = User.find(session[:id])
+  @user.conversations.push(@conversation)
+  @other_user = User.find(params['data-rid'])
+  @other_user.conversations.push(@conversation)
+  redirect '/user'
 end
