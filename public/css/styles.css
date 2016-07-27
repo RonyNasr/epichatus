@@ -194,15 +194,16 @@ main {
 /*conversations*/
 
 .chat-wrapper {
-  position: absolute;
   bottom: 0;
   left: 0;
+  position: absolute;
+  display: flex;
   width: 100%;
 }
 .module {
   width: 300px;
   margin: 20px;
-  float: left;
+  align-self: flex-end;
 }
 .top-bar {
   background: #666;
