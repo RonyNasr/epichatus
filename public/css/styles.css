@@ -170,7 +170,7 @@ main {
   color: white;
 }
 .dashboard {
-  margin-top: 10%;
+  margin-top: 5%;
   width: max-content;
 }
 .dashboard h2 {
@@ -238,6 +238,13 @@ a.plus {
     -moz-box-shadow: inset 0px 0px 10px 0px #ABABAB;
     -o-box-shadow: inset 0px 0px 10px 0px #ABABAB;
   height: auto;
+}
+.text_input:focus {
+  outline: none !important;
+  border:1px solid lightblue;
+}
+textarea {
+  resize: none;
 }
 .top-bar .left {
   float: left;
@@ -340,14 +347,22 @@ a.plus {
     opacity: 0.5;
   }
 }
+
 /*****************************************************/
-/*users*/
-#chats {
+/*users list*/
+
+.chats_icon {
   margin-left: 15px;
   cursor: pointer;
 }
-.chat_div {
+#chats_arrow_down {
   display: none;
+}
+.chat_div {
+  overflow-y: auto;
+  height: 200px;
+  width:100px;
+  padding-right: 25px;
 }
 .chat_div, .chats {
   width: max-content;
@@ -367,23 +382,14 @@ a.plus {
   width: 20px;
   margin-right: 10px;
 }
-
-/*.messages {
-  width: 100%;
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  text-align: center;
-  font-family: earth;
-  color: white;
-}*/
-/*.arrow{
-  font-family: future;
-  font-size: 100px;
-  line-height: 0;
-  display: block;
-
-}*/
-/*.messages h1 {
-  text-shadow: 1px 1px 1px gray;
-}*/
+::-webkit-scrollbar {
+    width: 12px;
+}
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+}

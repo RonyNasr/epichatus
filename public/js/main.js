@@ -13,11 +13,16 @@ window.onload= function(){
     $('.login').hide();
     $('.error').hide();
   });
-  $chats.click(function(){
+  $('.chats_icon').click(function(){
     $('.chat_div').slideToggle(500);
   });
-  $('.chat').click(function(){
-    $(this)
+  $('#chats_arrow_up').click(function(){
+    $(this).hide()
+    $('#chats_arrow_down').show()
+  });
+  $('#chats_arrow_down').click(function(){
+    $(this).hide()
+    $('#chats_arrow_up').show()
   });
   $('.minus').click(function(){
     $(this).closest("section").children(".discussion_with_input").toggle();

@@ -14,7 +14,7 @@
   </div>
 </div>
 <div class="dashboard">
-  <h2><span class="profile"><img src="../profile.png" alt="" /></span><%=@user.username %><span id="chats">+</span></h2>
+  <h2><span class="profile"><img src="../profile.png" alt="" /></span><%=@user.username %><span id="chats_arrow_up" class="chats_icon glyphicon glyphicon-chevron-up"></span><span id="chats_arrow_down" class="chats_icon glyphicon glyphicon-chevron-down"></span></h2>
   <div class="chat_div">
     <% if @users.any? %>
       <ul class="chats">
@@ -55,7 +55,7 @@
           <ol class="discussion">
             <li class="other">
               <div class="avatar">
-                <img src="./profile.png" alt="profile avater"/>
+                <img src="./profile2.png" alt="profile avater"/>
               </div>
               <div class="messages">
                 <p>yeah, they do early flights cause they connect with big airports.  they wanna get u to your connection</p>
@@ -74,7 +74,7 @@
             </li>
             <li class="other">
               <div class="avatar">
-                <img src="./profile.png" alt="profile avater"/>
+                <img src="./profile2.png" alt="profile avater"/>
               </div>
               <div class="messages">
                 <p>that mongodb thing looks good, huh?</p>
@@ -82,7 +82,7 @@
               </div>
             </li>
           </ol>
-          <input class="text_input" type="text" name="message">
+          <textarea class="text_input" type="text" name="message"></textarea>
         </div>
       </section>
     <% end %>
