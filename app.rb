@@ -87,6 +87,6 @@ end
 post '/conversation/:id' do
   conversation = Conversation.find(params['id'].to_i)
   conversation.messages.push(Message.create!(:body => params['body'], :user_id => conversation.recipient_id()))
-  
+
   redirect '/user'
 end
