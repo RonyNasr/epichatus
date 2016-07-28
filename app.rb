@@ -22,6 +22,7 @@ end
 
 get('/') do
   @users = User.all()
+
   erb(:index)
 end
 
@@ -33,6 +34,7 @@ get '/user' do
     erb(:user)
   else
     flash[:notice] = "You have been signed out due to inactivity"
+
     redirect '/'
   end
 end
@@ -40,14 +42,17 @@ end
 post '/signup/?' do
   if User.find_by email: params['signup_email']
     flash[:notice] = "That email is already registered to an account"
+
     redirect '/'
   elsif User.find_by username: params['signup_username']
     flash[:notice] = 'That username is taken'
+
     redirect '/'
   else
     secure_password = Password.create(params['signup_password'])
     @user = User.create({username: params['signup_username'], email: params['signup_email'], password: secure_password})
     session[:id] = @user.id
+
     redirect '/user'
   end
 end
@@ -56,9 +61,11 @@ post '/login/?' do
   if user = User.authenticate(params)
     @user = user
     session[:id] = @user.id
+
     redirect '/user'
   else
     flash[:notice] = "Invalid username or password."
+
     redirect '/'
   end
 end
@@ -66,6 +73,7 @@ end
 post '/logout/?' do
   session.clear
   flash[:notice] = "You have succesfully signed out"
+
   redirect '/'
 end
 
@@ -78,5 +86,11 @@ end
 delete '/conversation/:id/delete' do
   conversation = Conversation.find(params['conversation_id'])
   conversation.destroy()
+  redirect '/user'
+end
+
+post '/conversation/:id' do
+  conversation = Conversation.find(params['id'].to_i)
+  conversation.messages.push(Message.create!(:body => params['body'], :user_id => conversation.recipient_id()))
   redirect '/user'
 end
