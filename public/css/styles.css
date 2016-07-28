@@ -232,16 +232,23 @@ a.plus {
 }
 .text_input {
   align-self: flex-end;
-  width: 300px;
+  width: 250px;
   box-shadow: inset 0px 0px 10px 0px #ABABAB;
     -webkit-box-shadow: inset 0px 0px 10px 0px #ABABAB;
     -moz-box-shadow: inset 0px 0px 10px 0px #ABABAB;
     -o-box-shadow: inset 0px 0px 10px 0px #ABABAB;
   height: auto;
+  float: left;
 }
 .text_input:focus {
   outline: none !important;
   border:1px solid lightblue;
+}
+.send {
+  display: inline;
+  width:50px;
+  height: 46px;
+  background-color: white;
 }
 textarea {
   resize: none;
